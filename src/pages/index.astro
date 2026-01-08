@@ -3,6 +3,8 @@ import { SEO } from "astro-seo";
 import { Picture } from "astro:assets";
 import "../styles/global.css";
 
+import { Image } from "astro:assets";
+
 import coperta from "@/assets/preturi-coperta.png";
 import preturi1 from "@/assets/preturi-1.png";
 import preturi2 from "@/assets/preturi-2.png";
@@ -30,10 +32,45 @@ import Carousel from "@/components/Carousel.astro";
         />
     </head>
     <body class="bg-neutral-800">
+        <noscript class="text-slate-100 text-center *:px-4">
+            <style>
+                .js-only {
+                    display: none;
+                }
+            </style>
+            <h1 class="text-2xl mt-8 block font-bold">Tarife Cosmetică</h1>
+
+            <p>
+                Pentru a vedea catalogul interactiv, este nevoie ca aplicația pe
+                care o folosești să accesezi site-ul să aibă activată
+                funcționalitatea Javascript.
+            </p>
+            <a href="tel:+40757801944" class="underline text-violet-500 block"
+                >Fă o programare</a
+            >
+            <main class="">
+                <div class="grid gap-4 md:grid-cols-2 mt-4">
+                    {
+                        [coperta, preturi1, preturi2, preturi3].map((itm) => {
+                            return (
+                                <Image
+                                    src={itm}
+                                    alt={``}
+                                    class={`max-w-full  h-auto`}
+                                />
+                            );
+                        })
+                    }
+                </div>
+            </main>
+        </noscript>
         <Carousel images={[coperta, preturi1, preturi2, preturi3]} />
         <script
             is:inline
             src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"
+        ></script>
+        <!-- 100% privacy-first analytics -->
+        <script async src="https://scripts.simpleanalyticscdn.com/latest.js"
         ></script>
     </body>
 </html>
