@@ -4,6 +4,33 @@ import { Image } from "astro:assets";
 import { Picture } from "astro:assets";
 ---
 
+<noscript class="text-slate-100 text-center *:px-4">
+    <style>
+        .js-only {
+            display: none;
+        }
+    </style>
+    <h1 class="text-2xl mt-8 block font-bold">Tarife Cosmetică</h1>
+
+    <p>
+        Pentru a vedea catalogul interactiv, este nevoie ca aplicația pe care o
+        folosești să accesezi site-ul să aibă activată funcționalitatea
+        Javascript.
+    </p>
+    <a href="tel:+40757801944" class="underline text-violet-500 block"
+        >Fă o programare</a
+    >
+
+    <div class="grid gap-4 md:grid-cols-2 mt-4">
+        {
+            images.map((itm) => {
+                return (
+                    <Image src={itm} alt={``} class={`max-w-full  h-auto`} />
+                );
+            })
+        }
+    </div>
+</noscript>
 <div
     id="default-carousel"
     class="relative w-full mx-auto sm:max-w-md js-only"
