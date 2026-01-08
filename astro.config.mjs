@@ -8,6 +8,6 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
     },
-    site: "https://darpserj.github.io",
-    base: "/carina-cosmetica",
+    site: "https://carina-cosmetica.github.io",
+    base: "/home",
 });
