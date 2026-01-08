@@ -1,0 +1,39 @@
+---
+import { SEO } from "astro-seo";
+import { Picture } from "astro:assets";
+import "../styles/global.css";
+
+import coperta from "@/assets/preturi-coperta.png";
+import preturi1 from "@/assets/preturi-1.png";
+import preturi2 from "@/assets/preturi-2.png";
+import preturi3 from "@/assets/preturi-3.png";
+import Carousel from "@/components/Carousel.astro";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+
+        <SEO
+            title="Listă de prețuri"
+            description="Vezi tarifele pentru cosmetica facială, epilări, extensii de gene și sprâncene"
+            extend={{
+                link: [{ rel: "icon", href: "/favicon.jpg" }],
+            }}
+            noindex={false}
+            nofollow={false}
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="bg-neutral-800">
+        <Carousel images={[coperta, preturi1, preturi2, preturi3]} />
+        <script
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"
+        ></script>
+    </body>
+</html>
