@@ -1,115 +1,17 @@
 ---
-const { images } = Astro.props;
+import { getImage } from "astro:assets";
 import { Image } from "astro:assets";
 import { Picture } from "astro:assets";
+
+const { images } = Astro.props;
 ---
 
-<noscript class="text-slate-100 text-center *:px-4">
-    <style>
-        .js-only {
-            display: none;
-        }
-    </style>
-    <h1 class="text-2xl mt-8 block font-bold">Tarife Cosmetică</h1>
-
-    <p>
-        Pentru a vedea catalogul interactiv, este nevoie ca aplicația pe care o
-        folosești să accesezi site-ul să aibă activată funcționalitatea
-        Javascript.
-    </p>
-    <a href="tel:+40757801944" class="underline text-violet-500 block"
-        >Fă o programare</a
-    >
-
-    <div class="grid gap-4 md:grid-cols-2 mt-4">
+<section class="p-4 lg:min-h-screen grid place-items-center">
+    <div class="grid gap-4 xl:grid-cols-3">
         {
-            images.map((itm) => {
-                return (
-                    <Image src={itm} alt={``} class={`max-w-full  h-auto`} />
-                );
-            })
+            images.map((img) => (
+                <Picture src={img.default} formats={["avif", "webp"]} alt="" />
+            ))
         }
     </div>
-</noscript>
-<div
-    id="default-carousel"
-    class="relative w-full mx-auto sm:max-w-md js-only"
-    data-carousel="static"
->
-    <!-- Carousel wrapper -->
-    <div class="relative min-h-screen overflow-hidden rounded-base">
-        <!-- Item 1 -->
-
-        {
-            images.map((img) => {
-                return (
-                    <div
-                        class="hidden duration-700 ease-in-out"
-                        data-carousel-item
-                    >
-                        <Image
-                            src={img}
-                            inferSize
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="..."
-                        />
-                    </div>
-                );
-            })
-        }
-    </div>
-
-    <!-- Slider controls -->
-    <button
-        type="button"
-        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-prev
-    >
-        <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
-        >
-            <svg
-                class="w-5 h-5 text-white rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                ><path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m15 19-7-7 7-7"></path></svg
-            >
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button
-        type="button"
-        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-next
-    >
-        <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
-        >
-            <svg
-                class="w-5 h-5 text-white rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-                ><path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m9 5 7 7-7 7"></path></svg
-            >
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
+</section>

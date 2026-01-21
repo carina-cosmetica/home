@@ -5,12 +5,13 @@ import "../styles/global.css";
 
 import { Image } from "astro:assets";
 import { SimpleAnalytics } from "astro-simpleanalytics-plugin";
-
-import coperta from "@/assets/preturi-coperta.png";
-import preturi1 from "@/assets/preturi-1.png";
-import preturi2 from "@/assets/preturi-2.png";
-import preturi3 from "@/assets/preturi-3.png";
 import Carousel from "@/components/Carousel.astro";
+
+const priceList = Object.values(
+    import.meta.glob("../assets/price-list/*.png", {
+        eager: true,
+    })
+);
 ---
 
 <html lang="en">
@@ -32,12 +33,10 @@ import Carousel from "@/components/Carousel.astro";
             rel="stylesheet"
         />
     </head>
-    <body class="bg-neutral-800">
-        <Carousel images={[coperta, preturi1, preturi2, preturi3]} />
-        <script
-            is:inline
-            src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"
-        ></script>
+    <body class="bg-neutral-800 text-white">
+        <main class="">
+            <Carousel images={priceList} />
+        </main>
         <SimpleAnalytics />
     </body>
 </html>
